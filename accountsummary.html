@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" />
+        <link rel="stylesheet" href="css/bootstrap-reboot.min.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+
+        <link rel="stylesheet" href="css/accountsummary.css" />
+        <script src="scripts/accountsummary.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
+        <title>Account Summarizer</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="top-half">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <input
+                                    id="0"
+                                    type="text"
+                                    onpaste="handlePaste(event, this)"
+                                    onkeydown="handleKeyDown(event, this)"
+                                />
+                            </td>
+                            <td>
+                                <input
+                                    id="1"
+                                    type="text"
+                                    onpaste="handlePaste(event, this)"
+                                    onkeydown="handleKeyDown(event, this)"
+                                    onfocus="unformatCurrency(this)"
+                                    onblur="formatCurrency(this)"
+                                />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="bottom-half">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <input
+                                    id="2"
+                                    type="text"
+                                    onpaste="handlePaste(event, this)"
+                                    onkeydown="handleKeyDown(event, this)"
+                                    onfocus="unformatCurrency(this)"
+                                    onblur="formatCurrency(this)"
+                                />
+                            </td>
+                            <td>
+                                <input
+                                    id="3"
+                                    type="text"
+                                    onpaste="handlePaste(event, this)"
+                                    onkeydown="handleKeyDown(event, this)"
+                                />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

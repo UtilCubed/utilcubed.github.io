@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Autocomplete Search</title>
+        <style>
+            input[type="text"]::placeholder {
+                color: lightgray;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Autocomplete Search</h2>
+
+        <form>
+            <input type="text" id="searchBox" placeholder="Type here..." />
+        </form>
+
+        <script>
+            // Sample list of autocomplete suggestions
+            const suggestions = ["Apple", "Banana", "Orange", "Pineapple", "Grapes", "Watermelon", "Mango"];
+
+            const searchBox = document.getElementById("searchBox");
+            // Set placeholder to default
+            searchBox.placeholder = suggestions[0];
+
+            // Event listener for input on search box
+            searchBox.addEventListener("input", function () {
+                if (isAtBeginning(this)) return; // Prevent autocomplete suggestions when input is at the beginning
+
+                const inputText = this.value.toLowerCase();
+                let matches = [];
+
+                // Filter suggestions based on input text
+                matches = suggestions.filter((suggestion) => suggestion.toLowerCase().startsWith(inputText));
+
+                // Display autocomplete suggestions inline
+                if (matches.length > 0) {
+                    const autocomplete = matches[0].substr(inputText.length);
+                    this.value += autocomplete;
+                    this.autocompleteIndex = inputText.length;
+                    this.setSelectionRange(inputText.length, this.value.length);
+                }
+            });
+
+            // Event listener for backspace key press
+            searchBox.addEventListener("keydown", function (event) {
+                if (event.key === "Backspace") {
+                    if (this.autocompleteIndex > 0) {
+                        // Remove autocomplete suggestion when backspace is pressed
+                        this.value = this.value.slice(0, this.autocompleteIndex);
+                        this.autocompleteIndex = null;
+                    }
+                }
+            });
+
+            function isAtBeginning(input) {
+                return input.selectionStart === 0;
+            }
+        </script>
+    </body>
+</html>
